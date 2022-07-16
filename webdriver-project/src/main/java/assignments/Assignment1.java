@@ -14,8 +14,7 @@ public class Assignment1 {
 		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("cantremember");
 		driver.findElement(By.xpath("//*[@id='exampleCheck1']")).click();
 		
-		Select dropGender = new Select(driver.findElement(By.id("exampleFormControlSelect1")));
-		dropGender.selectByVisibleText("Male");
+		new Select(driver.findElement(By.id("exampleFormControlSelect1"))).selectByVisibleText("Male");
 		
 		driver.findElement(By.xpath("//*[@id='inlineRadio1']")).click();
 		driver.findElement(By.name("bday")).sendKeys("07162017");
