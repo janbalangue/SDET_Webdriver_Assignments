@@ -3,7 +3,7 @@ package assignments;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Assignment2 {
+public class PhpTravels implements Assignment {
 		
 	public void runTest(WebDriver driver) {
 		driver.get("https://phptravels.com/demo");

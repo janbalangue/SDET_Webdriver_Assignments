@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class Assignment1 {
+public class AngularPractice implements Assignment {
 		
 	public void runTest(WebDriver driver) {
 		driver.get("https://rahulshettyacademy.com/angularpractice/");

@@ -7,10 +7,10 @@ public class App {
 
 	public static void main(String[] args) {
 		setProperties();
-		new Assignment1().runTest(new ChromeDriver());
-		new Assignment1().runTest(new FirefoxDriver());
-		new Assignment2().runTest(new ChromeDriver());
-		new Assignment2().runTest(new FirefoxDriver());
+		new AngularPractice().runTest(new ChromeDriver());
+		new AngularPractice().runTest(new FirefoxDriver());
+		new PhpTravels().runTest(new ChromeDriver());
+		new PhpTravels().runTest(new FirefoxDriver());
 	}
 	
 	public static void setProperties() {
