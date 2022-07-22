@@ -1,5 +1,9 @@
 package assignments;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -22,6 +26,12 @@ public class AngularPractice implements Assignment {
 		
 		System.out.println("Success at " + driver.getCurrentUrl() + " using " + driver.getClass());
 		driver.quit();
+	}
+
+	@Override
+	public List<String> linkList(File file) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

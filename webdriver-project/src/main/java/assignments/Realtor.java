@@ -1,5 +1,9 @@
 package assignments;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +13,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Realtor implements Assignment {
+	
+	public Realtor() {
+	}
 
 	@Override
-	public void runTest(WebDriver driver) {
+	public void runTest(WebDriver driver) throws FileNotFoundException {
+		
 		driver.manage().window().maximize();
 		driver.get("https://www.realtor.com/");
 		WebElement searchElement = driver.findElement(By.xpath("//input[@id='searchbox-input']"));
@@ -87,7 +95,23 @@ public class Realtor implements Assignment {
 		new Select(driver.findElement(By.xpath("//select[@id='home-age-input-1']"))).selectByVisibleText("1 years");
 		new Select(driver.findElement(By.xpath("//select[@id='home-age-input-2']"))).selectByVisibleText("3 years");
 		
+		// stories
+		driver.findElement(By.xpath("//*[@id=\"filter-section-header-stories\"]/div")).click();
+		new Select(driver.findElement(By.xpath("//label[@aria-label='Select Single home stories']"))).selectByVisibleText("Single");
 		
+		// garage
+		driver.findElement(By.xpath("//div[@id='filter-section-header-garage']//div[@class='jsx-1143219402 section-header-wrapper']")).click();
+		new Select(driver.findElement(By.xpath("//label[@aria-label='Select 1+ Parkings']"))).selectByVisibleText("1+");
+		
+
 	}
+	
+	@Override
+	public List<String> linkList(File file) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }
