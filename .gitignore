@@ -4,3 +4,4 @@ webdriver-project/.classpath
 webdriver-project/.project
 webdriver-project/.settings/
 webdriver-project/target/
+*.png

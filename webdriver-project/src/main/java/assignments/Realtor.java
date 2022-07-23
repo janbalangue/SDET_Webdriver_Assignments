@@ -1,7 +1,7 @@
 package assignments;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -12,19 +12,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+// Realtor.com got wise to our class assignment and now gives a bot-detected error message.
 public class Realtor implements Assignment {
-	
-	public Realtor() {
-	}
+
+	List<String[]> linksList;
+	Iterator<String[]> iterator;
 
 	@Override
-	public void runTest(WebDriver driver) throws FileNotFoundException {
-		
+	public void runTest(WebDriver driver) {
+		try {
+			linksList = new LinksList().linkList(new FileReader("./realtor.csv"));
+			iterator = linksList.iterator();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		driver.manage().window().maximize();
 		driver.get("https://www.realtor.com/");
-		WebElement searchElement = driver.findElement(By.xpath("//input[@id='searchbox-input']"));
+		WebElement searchElement = driver.findElement(By.xpath(iterator.next()[0]));
 		searchElement.sendKeys("New York");
-		new Select(searchElement).selectByVisibleText("New York, NY");
+		new Select(searchElement).selectByIndex(0);
 
 		WebElement propertyTypeElement = new WebDriverWait(driver, 5L, 5L)
 				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Property Type']")));
@@ -84,34 +91,32 @@ public class Realtor implements Assignment {
 		new Select(driver.findElement(
 				By.xpath("//div[@class='jsx-1969582668 col-xxs-6 max-range range-input']//span[@role='button']")))
 				.selectByVisibleText("2250 sqft");
-		
+
 		// lot size
-		driver.findElement(By.xpath("//div[@id='filter-section-header-lot-size']//div[@class='jsx-1143219402 section-header-wrapper']")).click();
+		driver.findElement(By.xpath(
+				"//div[@id='filter-section-header-lot-size']//div[@class='jsx-1143219402 section-header-wrapper']"))
+				.click();
 		new Select(driver.findElement(By.xpath("//select[@id='lot-size-input-1']"))).selectByVisibleText("2000 sqft");
 		new Select(driver.findElement(By.xpath("//select[@id='lot-size-input-2']"))).selectByVisibleText("3000 sqft");
-		
+
 		// home age
-		driver.findElement(By.xpath("//div[@id='filter-section-header-age']//div[@class='jsx-1143219402 section-header-wrapper']")).click();
+		driver.findElement(
+				By.xpath("//div[@id='filter-section-header-age']//div[@class='jsx-1143219402 section-header-wrapper']"))
+				.click();
 		new Select(driver.findElement(By.xpath("//select[@id='home-age-input-1']"))).selectByVisibleText("1 years");
 		new Select(driver.findElement(By.xpath("//select[@id='home-age-input-2']"))).selectByVisibleText("3 years");
-		
+
 		// stories
 		driver.findElement(By.xpath("//*[@id=\"filter-section-header-stories\"]/div")).click();
-		new Select(driver.findElement(By.xpath("//label[@aria-label='Select Single home stories']"))).selectByVisibleText("Single");
-		
+		new Select(driver.findElement(By.xpath("//label[@aria-label='Select Single home stories']")))
+				.selectByVisibleText("Single");
+
 		// garage
-		driver.findElement(By.xpath("//div[@id='filter-section-header-garage']//div[@class='jsx-1143219402 section-header-wrapper']")).click();
+		driver.findElement(By.xpath(
+				"//div[@id='filter-section-header-garage']//div[@class='jsx-1143219402 section-header-wrapper']"))
+				.click();
 		new Select(driver.findElement(By.xpath("//label[@aria-label='Select 1+ Parkings']"))).selectByVisibleText("1+");
-		
 
 	}
-	
-	@Override
-	public List<String> linkList(File file) throws FileNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 
 }
