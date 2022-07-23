@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-// Realtor.com got wise to our class assignment and now gives a bot-detected error message.
+// Realtor.com got wise to my bot and isn't messing around anymore
 public class Realtor implements Assignment {
 
 	List<String[]> linksList;
