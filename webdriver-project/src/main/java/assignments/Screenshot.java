@@ -13,7 +13,7 @@ public class Screenshot {
 
 	public void takeScreenshot(WebDriver driver, String filename, AtomicLong atomicLong) {
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		File destinationFile = new File("./" + filename + "-" + driver.getClass().getSimpleName() + "-"
+		File destinationFile = new File("./images/" + filename + "-" + driver.getClass().getSimpleName() + "-"
 				+ atomicLong.incrementAndGet() + ".png");
 		try {
 			FileUtils.copyFile(screenshot, destinationFile);

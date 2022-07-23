@@ -1,19 +1,35 @@
 package assignments;
 
+import java.io.FileReader;
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PhpTravels implements Assignment {
 
+	List<String[]> linksList;
+	Iterator<String[]> iterator;
+
 	@Override
 	public void runTest(WebDriver driver) {
-		driver.get("https://phptravels.com/demo");
+		try {
+			linksList = new LinksList().linkList(new FileReader("./csv/phptravels.csv"));
+			iterator = linksList.iterator();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		driver.get(iterator.next()[0]);
 		driver.manage().window().maximize();
-		driver.findElement(By.xpath("//*[@placeholder='First Name']")).sendKeys("Vanilla");
-		driver.findElement(By.xpath("//*[@placeholder='Last Name']")).sendKeys("Ice");
-		driver.findElement(By.xpath("//*[@placeholder='Business Name']")).sendKeys("DevLabs Alliance");
-		driver.findElement(By.xpath("//*[@placeholder='Email']")).sendKeys("yo.illsolveit@gmail.com");
-		driver.findElement(By.xpath("//iframe[@title='reCAPTCHA']")).click();
+		new Screenshot().takeScreenshot(driver, this.getClass().getSimpleName(), atomicLong);
+
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).click();
+		new Screenshot().takeScreenshot(driver, this.getClass().getSimpleName(), atomicLong);
 
 		System.out.println("Success at " + driver.getCurrentUrl() + " using " + driver.getClass());
 		driver.quit();

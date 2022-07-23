@@ -18,7 +18,7 @@ public class SauceDemo implements Assignment {
 	@Override
 	public void runTest(WebDriver driver) {
 		try {
-			linksList = new LinksList().linkList(new FileReader("./saucedemo.csv"));
+			linksList = new LinksList().linkList(new FileReader("./csv/saucedemo.csv"));
 			iterator = linksList.iterator();
 		} catch (Exception e) {
 			e.printStackTrace();

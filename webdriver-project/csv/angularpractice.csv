@@ -1,0 +1,14 @@
+https://rahulshettyacademy.com/angularpractice/
+//input[@name='name']
+Vanilla Ice
+//input[@name='email']
+yo.illsolveit@gmail.com
+//input[@placeholder='Password']
+cantremember
+//*[@id='exampleCheck1']
+exampleFormControlSelect1
+Male
+//*[@id='inlineRadio1']
+bday
+07162017
+//*[@value='Submit']

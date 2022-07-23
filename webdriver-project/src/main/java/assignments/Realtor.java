@@ -21,7 +21,7 @@ public class Realtor implements Assignment {
 	@Override
 	public void runTest(WebDriver driver) {
 		try {
-			linksList = new LinksList().linkList(new FileReader("./realtor.csv"));
+			linksList = new LinksList().linkList(new FileReader("./csv/realtor.csv"));
 			iterator = linksList.iterator();
 		} catch (Exception e) {
 			e.printStackTrace();

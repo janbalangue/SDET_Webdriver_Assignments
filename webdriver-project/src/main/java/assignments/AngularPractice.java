@@ -1,25 +1,42 @@
 package assignments;
 
+import java.io.FileReader;
+import java.util.Iterator;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class AngularPractice implements Assignment {
 
+	List<String[]> linksList;
+	Iterator<String[]> iterator;
+
 	@Override
 	public void runTest(WebDriver driver) {
-		driver.get("https://rahulshettyacademy.com/angularpractice/");
+		try {
+			linksList = new LinksList().linkList(new FileReader("./csv/angularpractice.csv"));
+			iterator = linksList.iterator();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		driver.get(iterator.next()[0]);
 		driver.manage().window().maximize();
-		driver.findElement(By.xpath("//input[@name='name']")).sendKeys("Vanilla Ice");
-		driver.findElement(By.xpath("//input[@name='email']")).sendKeys("yo.illsolveit@gmail.com");
-		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("cantremember");
-		driver.findElement(By.xpath("//*[@id='exampleCheck1']")).click();
+		new Screenshot().takeScreenshot(driver, this.getClass().getSimpleName(), atomicLong);
 
-		new Select(driver.findElement(By.id("exampleFormControlSelect1"))).selectByVisibleText("Male");
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).click();
+		new Screenshot().takeScreenshot(driver, this.getClass().getSimpleName(), atomicLong);
 
-		driver.findElement(By.xpath("//*[@id='inlineRadio1']")).click();
-		driver.findElement(By.name("bday")).sendKeys("07162017");
-		driver.findElement(By.xpath("//*[@value='Submit']")).click();
+		new Select(driver.findElement(By.id(iterator.next()[0]))).selectByVisibleText(iterator.next()[0]);
+
+		driver.findElement(By.xpath(iterator.next()[0])).click();
+		driver.findElement(By.name(iterator.next()[0])).sendKeys(iterator.next()[0]);
+		driver.findElement(By.xpath(iterator.next()[0])).click();
+		new Screenshot().takeScreenshot(driver, this.getClass().getSimpleName(), atomicLong);
 
 		System.out.println("Success at " + driver.getCurrentUrl() + " using " + driver.getClass());
 		driver.quit();
