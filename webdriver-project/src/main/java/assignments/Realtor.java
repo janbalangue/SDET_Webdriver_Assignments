@@ -28,7 +28,7 @@ public class Realtor implements Assignment {
 		}
 
 		driver.manage().window().maximize();
-		driver.get("https://www.realtor.com/");
+		driver.get(iterator.next()[0]);
 		WebElement searchElement = driver.findElement(By.xpath(iterator.next()[0]));
 		searchElement.sendKeys("New York");
 		new Select(searchElement).selectByIndex(0);
