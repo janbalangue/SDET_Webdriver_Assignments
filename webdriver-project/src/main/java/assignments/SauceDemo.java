@@ -3,19 +3,16 @@ package assignments;
 import java.io.FileReader;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SauceDemo implements Assignment {
 
-	static AtomicLong atomicLong;
 	List<String[]> linksList;
 	Iterator<String[]> iterator;
 
 	public SauceDemo() {
-		atomicLong = new AtomicLong(0L);
 	}
 
 	@Override
