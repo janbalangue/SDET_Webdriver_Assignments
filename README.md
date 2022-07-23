@@ -1,11 +1,11 @@
 # SDET_Webdriver_Assignments
 Selenium WebDriver Assignments for DevLabs Alliance SDET class
 
-2022.07.16
+2022.07.16 - App0716.java
 1. AngularPractice.java
 2. PhpTravels.java
 
-2022.07.17
+2022.07.17 - App0717.java
 1. Realtor.java - doesn't work, website detects my bot
 2. SauceDemo.java - finished
 
